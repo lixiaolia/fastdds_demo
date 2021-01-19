@@ -1,2 +1,76 @@
 # fastdds_demo
-用于演示Fast-DDS的使用
+官网地址：https://www.eprosima.com/
+
+环境：Ubuntu 16.04
+
+安装依赖，参考https://fast-dds.docs.eprosima.com/en/latest/installation/sources/sources_linux.html：
+
+```bash
+sudo apt install libasio-dev libtinyxml2-dev
+```
+
+编译安装 Fast CDR ，提供了两种序列化机制：
+
+```bash
+git clone https://github.com/eProsima/Fast-CDR.git
+mkdir Fast-CDR/build && cd Fast-CDR/build
+cmake ..
+make
+sudo make install
+```
+
+编译安装 Foonathan memory ，提供了经过优化的分配器：
+
+```bash
+git clone https://github.com/eProsima/foonathan_memory_vendor.git
+cd foonathan_memory_vendor
+mkdir build && cd build
+cmake ..
+make
+sudo make install
+```
+
+安装编译 Fast-DDS：
+
+```bash
+git clone https://github.com/eProsima/Fast-DDS.git
+mkdir Fast-DDS/build && cd Fast-DDS/build
+cmake -DTHIRDPARTY=ON -DBUILD_JAVA=ON -DCOMPILE_EXAMPLES=ON -DPERFORMANCE_TESTS=ON ..
+make
+sudo make install
+```
+
+编译代码生成工具 Fast-DDS Gen (需要先装好Java和Gradle，可自行百度)：
+
+```bash
+git clone --recursive https://github.com/eProsima/Fast-DDS-Gen.git
+cd Fast-DDS-Gen
+gradle assemble
+```
+
+把编译出来的执行脚本加到zsh环境变量：
+
+```bash
+sudo gedit ~/.zshrc
+加到最后一行：
+# Fast-DDS Gen
+export PATH=/home/lxl/develop/Fast-DDS-Gen/scripts:$PATH
+```
+
+创建HelloWorld.idl，生成代码：
+
+```bash
+cd fastdds_demo
+fastddsgen -example CMake HelloWorld.idl
+```
+
+稍微改一下CMakeLists.txt，即可编译运行：
+
+```bash
+mkdir build && cd build
+cmake ..
+make
+./HelloWorld publisher
+./HelloWorld subscriber
+```
+
