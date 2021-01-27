@@ -9,6 +9,18 @@
 sudo apt install libasio-dev libtinyxml2-dev
 ```
 
+编译安装 Foonathan memory ，提供了经过优化的分配器：
+
+```bash
+git clone https://github.com/eProsima/foonathan_memory_vendor.git
+cd foonathan_memory_vendor
+mkdir build && cd build
+# 默认安装路径：/usr/local
+cmake ..
+make
+sudo make install
+```
+
 编译安装 Fast CDR ，提供了两种序列化机制：
 
 ```bash
@@ -19,28 +31,18 @@ make
 sudo make install
 ```
 
-编译安装 Foonathan memory ，提供了经过优化的分配器：
-
-```bash
-git clone https://github.com/eProsima/foonathan_memory_vendor.git
-cd foonathan_memory_vendor
-mkdir build && cd build
-cmake ..
-make
-sudo make install
-```
-
 安装编译 Fast-DDS：
 
 ```bash
 git clone https://github.com/eProsima/Fast-DDS.git
 mkdir Fast-DDS/build && cd Fast-DDS/build
-cmake -DTHIRDPARTY=ON -DBUILD_JAVA=ON -DCOMPILE_EXAMPLES=ON -DPERFORMANCE_TESTS=ON ..
+# 打开Debug模式：
+cmake -DLOG_NO_INFO=OFF -DEPROSIMA_BUILD=ON -DTHIRDPARTY=ON ..
 make
 sudo make install
 ```
 
-编译代码生成工具 Fast-DDS Gen (需要先装好Java和Gradle，可自行百度)：
+编译代码生成工具 Fast-DDS Gen (需要先装好Java和Gradle)：
 
 ```bash
 git clone --recursive https://github.com/eProsima/Fast-DDS-Gen.git
@@ -48,7 +50,7 @@ cd Fast-DDS-Gen
 gradle assemble
 ```
 
-把编译出来的执行脚本加到zsh环境变量：
+把编译出来的执行脚本加到zsh(你也可以是bash)环境变量：
 
 ```bash
 sudo gedit ~/.zshrc
@@ -57,7 +59,7 @@ sudo gedit ~/.zshrc
 export PATH=/home/lxl/develop/Fast-DDS-Gen/scripts:$PATH
 ```
 
-创建HelloWorld.idl，生成代码：
+创建HelloWorld.idl，生成示例代码：
 
 ```bash
 cd fastdds_demo

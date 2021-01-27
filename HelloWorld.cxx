@@ -21,10 +21,8 @@
 
 #ifdef _WIN32
 // Remove linker warning LNK4221 on Visual Studio
-namespace {
-char dummy;
-}  // namespace
-#endif  // _WIN32
+namespace { char dummy; }
+#endif
 
 #include "HelloWorld.h"
 #include <fastcdr/Cdr.h>
@@ -36,9 +34,9 @@ using namespace eprosima::fastcdr::exception;
 
 HelloWorld::HelloWorld()
 {
-    // m_index com.eprosima.idl.parser.typecode.PrimitiveTypeCode@9353778
+    // m_index com.eprosima.idl.parser.typecode.PrimitiveTypeCode@1622f1b
     m_index = 0;
-    // m_message com.eprosima.idl.parser.typecode.StringTypeCode@1700915
+    // m_message com.eprosima.idl.parser.typecode.StringTypeCode@70e8f8e
     m_message ="";
 
 }
@@ -49,22 +47,19 @@ HelloWorld::~HelloWorld()
 
 }
 
-HelloWorld::HelloWorld(
-        const HelloWorld& x)
+HelloWorld::HelloWorld(const HelloWorld &x)
 {
     m_index = x.m_index;
     m_message = x.m_message;
 }
 
-HelloWorld::HelloWorld(
-        HelloWorld&& x)
+HelloWorld::HelloWorld(HelloWorld &&x)
 {
     m_index = x.m_index;
     m_message = std::move(x.m_message);
 }
 
-HelloWorld& HelloWorld::operator =(
-        const HelloWorld& x)
+HelloWorld& HelloWorld::operator=(const HelloWorld &x)
 {
 
     m_index = x.m_index;
@@ -73,8 +68,7 @@ HelloWorld& HelloWorld::operator =(
     return *this;
 }
 
-HelloWorld& HelloWorld::operator =(
-        HelloWorld&& x)
+HelloWorld& HelloWorld::operator=(HelloWorld &&x)
 {
 
     m_index = x.m_index;
@@ -83,8 +77,7 @@ HelloWorld& HelloWorld::operator =(
     return *this;
 }
 
-size_t HelloWorld::getMaxCdrSerializedSize(
-        size_t current_alignment)
+size_t HelloWorld::getMaxCdrSerializedSize(size_t current_alignment)
 {
     size_t initial_alignment = current_alignment;
 
@@ -98,9 +91,7 @@ size_t HelloWorld::getMaxCdrSerializedSize(
     return current_alignment - initial_alignment;
 }
 
-size_t HelloWorld::getCdrSerializedSize(
-        const HelloWorld& data,
-        size_t current_alignment)
+size_t HelloWorld::getCdrSerializedSize(const HelloWorld& data, size_t current_alignment)
 {
     (void)data;
     size_t initial_alignment = current_alignment;
@@ -115,17 +106,14 @@ size_t HelloWorld::getCdrSerializedSize(
     return current_alignment - initial_alignment;
 }
 
-void HelloWorld::serialize(
-        eprosima::fastcdr::Cdr& scdr) const
+void HelloWorld::serialize(eprosima::fastcdr::Cdr &scdr) const
 {
 
     scdr << m_index;
     scdr << m_message;
-
 }
 
-void HelloWorld::deserialize(
-        eprosima::fastcdr::Cdr& dcdr)
+void HelloWorld::deserialize(eprosima::fastcdr::Cdr &dcdr)
 {
 
     dcdr >> m_index;
@@ -136,10 +124,9 @@ void HelloWorld::deserialize(
  * @brief This function sets a value in member index
  * @param _index New value for member index
  */
-void HelloWorld::index(
-        uint32_t _index)
+void HelloWorld::index(uint32_t _index)
 {
-    m_index = _index;
+m_index = _index;
 }
 
 /*!
@@ -164,20 +151,18 @@ uint32_t& HelloWorld::index()
  * @brief This function copies the value in member message
  * @param _message New value to be copied in member message
  */
-void HelloWorld::message(
-        const std::string& _message)
+void HelloWorld::message(const std::string &_message)
 {
-    m_message = _message;
+m_message = _message;
 }
 
 /*!
  * @brief This function moves the value in member message
  * @param _message New value to be moved in member message
  */
-void HelloWorld::message(
-        std::string&& _message)
+void HelloWorld::message(std::string &&_message)
 {
-    m_message = std::move(_message);
+m_message = std::move(_message);
 }
 
 /*!
@@ -198,8 +183,7 @@ std::string& HelloWorld::message()
     return m_message;
 }
 
-size_t HelloWorld::getKeyMaxCdrSerializedSize(
-        size_t current_alignment)
+size_t HelloWorld::getKeyMaxCdrSerializedSize(size_t current_alignment)
 {
     size_t current_align = current_alignment;
 
@@ -212,12 +196,12 @@ size_t HelloWorld::getKeyMaxCdrSerializedSize(
 
 bool HelloWorld::isKeyDefined()
 {
-    return false;
+   return false;
 }
 
-void HelloWorld::serializeKey(
-        eprosima::fastcdr::Cdr& scdr) const
+void HelloWorld::serializeKey(eprosima::fastcdr::Cdr &scdr) const
 {
     (void) scdr;
-      
+     
+     
 }
