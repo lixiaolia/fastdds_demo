@@ -53,20 +53,23 @@ gradle assemble
 把编译出来的执行脚本加到zsh(你也可以是bash)环境变量：
 
 ```bash
-sudo gedit ~/.zshrc
+gedit ~/.zshrc
 加到最后一行：
 # Fast-DDS Gen
-export PATH=/home/lxl/develop/Fast-DDS-Gen/scripts:$PATH
+export PATH=/home/lxl/Fast-DDS/Fast-DDS-Gen/scripts:$PATH
 ```
 
 创建HelloWorld.idl，生成示例代码：
 
 ```bash
 cd fastdds_demo
-fastddsgen -example CMake HelloWorld.idl
+# 较新工具
+fastddsgen HelloWorld.idl
+# 老工具
+fastrtpsgen HelloWorld.idl
 ```
 
-稍微改一下CMakeLists.txt，即可编译运行：
+编译运行：
 
 ```bash
 mkdir build && cd build

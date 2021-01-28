@@ -46,11 +46,11 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_CLANG OR
     endif()
 endif()
 
-message(STATUS "Configuring HelloWorld example...")
+message(STATUS "Configuring HelloWorld ...")
 file(GLOB HELLOWORLD_EXAMPLE_SOURCES_CXX "*.cxx")
 file(GLOB HELLOWORLD_EXAMPLE_SOURCES_CPP "*.cpp")
 
-add_executable(HelloWorldExample ${HELLOWORLD_EXAMPLE_SOURCES_CXX} ${HELLOWORLD_EXAMPLE_SOURCES_CPP})
-target_link_libraries(HelloWorldExample fastrtps fastcdr foonathan_memory pthread)
+add_executable(HelloWorld ${HELLOWORLD_EXAMPLE_SOURCES_CXX} ${HELLOWORLD_EXAMPLE_SOURCES_CPP})
+target_link_libraries(HelloWorld fastrtps fastcdr foonathan_memory pthread)
 # install(TARGETS HelloWorldExample
 #     RUNTIME DESTINATION examples/C++/HelloWorldExample/${BIN_INSTALL_DIR})
