@@ -12,8 +12,8 @@ sudo apt install libasio-dev libtinyxml2-dev
 编译安装 Foonathan memory ，提供了经过优化的分配器：
 
 ```bash
-git clone https://github.com/eProsima/foonathan_memory_vendor.git
-cd foonathan_memory_vendor
+git clone git clone https://github.com/foonathan/memory.git
+cd memory
 mkdir build && cd build
 # 默认安装路径：/usr/local
 cmake ..
